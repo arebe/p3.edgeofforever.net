@@ -1,0 +1,36 @@
+/** General **/
+header{
+
+}
+
+.intro{
+
+}
+
+footer{
+	background-color: #000000;
+	font-family: Tahoma;
+	color: #C0C0CA;
+	font-size: smaller;
+	padding-left: 5px;
+	padding-right: 25px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	border-radius: 5px;
+}
+
+/** Layout **/
+#inputs{
+	width: 425px;
+	margin-right: 50px;
+}
+
+#wheel{
+	width: 620px;
+	text-align: center;
+}
+
+/** Camelot Code wheel **/
+#no_cavas{
+
+}
