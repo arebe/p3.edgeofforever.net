@@ -27,39 +27,46 @@
 		audience.
 	</p>
 	<!-- left side with the input fields -->
-	<div id = "inputs">
-		<h2>Enter the attributes of the current (outgoing) track:</h2>
-		<p>Beats per minute (BPM):</p>
-		<input type='text' id='bpm' maxlength='3'>
-		<div id='bpm_error'>Max 3 chars</div>
-		<p>Camelot code (key):</p>
-		<input type='text' id='camelot_code' maxlength='3'>
-		<div id='camelot_code_error'>Please enter Camelot code</div>
-		<br><br>
-		<h2>Select the desired crowd response:</h2>
-		<input type='radio' name='response' id='zone_out'>
-		<label for='zone_out'>zone out</label><br>
+	<div id = "leftside">
+		<div id = "inputs">
+			<h2>Enter the attributes of the current (outgoing) track:</h2>
+			<p>Tempo (beats per minute):</p>
+			<input type='text' id='bpm' maxlength='3'>
+			<div id='bpm_error'>Please enter BPM between 40 and 280.</div>
+			<p>Camelot key code (see chart):</p>
+			<input type='text' id='camelot_code' maxlength='3'>
+			<div id='camelot_code_error'>Please enter Camelot code.</div>
+			<br><br>
+			<h2>Select the desired crowd response:</h2>
+			<input type='radio' name='response' id='zone_out'>
+			<label for='zone_out'>zone out</label><br>
+			
+			<input type='radio' name='response' id='chill'>
+			<label for='chill'>chill</label><br>
+
+			<input type='radio' name='response' id='maintain_groove'>
+			<label for='maintain_groove'>maintain groove</label><br>
+
+			<input type='radio' name='response' id='energy_boost'>
+			<label for='energy_boost'>energy boost</label><br>
+
+			<input type='radio' name='response' id='next_level'>
+			<label for='next_level'>next level</label><br>
+	
+			<input type='radio' name='response' id='catalyze'>
+			<label for='catalyze'>catalyze</label><br>
+			<div id='response_error'>Please select response.</div>
 		
-		<input type='radio' name='response' id='chill'>
-		<label for='chill'>chill</label><br>
-
-		<input type='radio' name='response' id='maintain_groove'>
-		<label for='maintain_groove'>maintain groove</label><br>
-
-		<input type='radio' name='response' id='energy_boost'>
-		<label for='energy_boost'>energy boost</label><br>
-
-		<input type='radio' name='response' id='next_level'>
-		<label for='next_level'>next level</label><br>
-
-		<input type='radio' name='response' id='catalyze'>
-		<label for='catalyze'>catalyze</label><br>
-		
-		<!-- output data -->
-		<h2>Suggestions for the next (incoming) track:</h2>
-		<div id='bpm_incoming'>BPM: <span></span></div>	
-		<div id='key_incoming'>Key: <span></span></div>
-		<div id='transition_time'>Transition time: <span></span></div>
+			<input type='button' id='analyze' value='Analyze outgoing track'>
+		</div>
+		<div id="outputs">
+			<!-- output data -->
+			<h2>Suggestions for the next (incoming) track:</h2>
+			<div id='bpm_incoming'>BPM: <span></span></div>	
+			<div id='keys_incoming'>Camelot codes (key): <span></span></div>
+			<div id='transition_time'>Transition
+			time: <span></span></div>
+		</div>
 	</div>
 	<!-- right side with camelot codes -->
 	<div id = "wheel">

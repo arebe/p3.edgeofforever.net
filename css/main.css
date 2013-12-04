@@ -25,6 +25,7 @@ body{
 
 h2{
 	font-size: 16pt;
+	line-height: 14pt;
 }
 
 footer{
@@ -41,11 +42,25 @@ footer{
 }
 
 /** Layout **/
-#inputs{
+#leftside{
 	width: 425px;
 	margin-right: 50px;
+	margin-left: 1em;
 	margin-bottom: 1em;
 	float: left;
+}
+
+#inputs{
+	background-image:url("../images/back_pattern.png");
+	padding: 0.5em 1em;
+	border-radius: 5px;
+}
+
+#outputs{
+	background-image:url("../images/back_pattern.png");
+	padding: 0.5em 1em;
+	border-radius: 5px;
+	margin-top: 0.5em;
 }
 
 #wheel{

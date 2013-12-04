@@ -8,8 +8,19 @@
 
 #bpm_error{
 	color: red;
+	display: none;
 }
 
 #camelot_code_error{
 	color: red;
+	display: none;
+}
+
+#response_error{
+	color: red;
+	display: none;
+}
+
+#analyze{
+	margin: 1.2em auto 0.9em;
 }
