@@ -125,12 +125,60 @@ $('#analyze').click(function(){
 	
 	// analyze outgoing track key and return suggested keys
 	function harmonic_keys(key_outgoing){
-		var keys = ["6A", "7B", "5B"];
-		return keys;
+		// parse outoing key code into alpha and numeric parts
+		var key_n = parse_code(key_outgoing)[0];
+		var key_a = parse_code(key_outgoing)[1];
+		var key_other = parse_code(key_outgoing)[2];
+
+		// keys[0] =  -1; keys[1] = n; keys[2] = +1; keys[3] = n in/out
+		var keys = [];
+		// first key is a step backwards around the wheel
+		keys[0] = (key_n > 1) ? (key_n - 1 + key_a) : (12 + key_a);
+		// second key is same as outgoing track
+		keys[1] = key_outgoing;
+		// third key is one step up the wheel
+		keys[2] = (key_n < 12) ? (key_n + 1 + key_a) : (1 + key_a);
+		// fourth key is a radial step
+		keys[3] = key_n + key_other;
+		
+		return list_keys(keys);
 	}
 
 	function energy_boost_keys(key_outgoing){
-		var keys = ["8B", "1B"];
-		return keys;
+		// parse outoing key code into alpha and numeric parts
+		var key_n = parse_code(key_outgoing)[0];
+		var key_a = parse_code(key_outgoing)[1];
+
+		// keys[0] =  +2; keys[1] = +7
+		var keys = [];
+		// first key is 2 steps around the wheel
+		keys[0] = (key_n < 11) ? (key_n + 2 + key_a) : ((key_n + 2) % 12 + key_a);
+		// second key is 7 steps around the wheel
+		keys[1] = (key_n < 6) ? (key_n + 7 + key_a) : ((key_n + 7) % 12+ key_a);
+		return list_keys(keys);
+	}
+	
+	// parse camelot code into alpha and numeric parts
+	function parse_code(key_outgoing){
+		var key_n = parseInt(key_outgoing);
+		var key_a = /[AB]/.exec(key_outgoing);
+		// set var for inner / outer motion in wheel
+		var key_other = (key_a == 'A') ? 'B' : 'A';
+
+		return [key_n, key_a, key_other];
+	}	
+
+	// format the keys as a comma-separated list
+	function list_keys(keys){
+		var keylist = "";
+		for (var i = 0; i < keys.length; i++){
+			if (i == keys.length - 1){
+				keylist += keys[i];
+			}
+			else{
+				keylist += keys[i] + ",";
+			}
+		}
+		return keylist;
 	}
 });
