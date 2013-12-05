@@ -29,6 +29,8 @@ var camelot_code_key = {
 $(document).ready(function(){
 	console.log('ready!');
 	$('#canvas').addClass('wheel_background');
+	var canvas = document.getElementById('canvas'),
+	context = canvas.getContext('2d');
 });
 
 // bpm error checking
@@ -129,6 +131,15 @@ $('#analyze').click(function(){
 		var key_n = parse_code(key_outgoing)[0];
 		var key_a = parse_code(key_outgoing)[1];
 		var key_other = parse_code(key_outgoing)[2];
+		
+		// show and rotate overlay
+	    	if (key_a =='B'){
+		    img_overlay = new Image();
+		    img_overlay.src='../images/ wheel_overlay_harmonic_b.png';
+		    img_overlay.onload = function(){
+			context.drawImage(img_overlay, 0, 0);
+		    }
+	    	}
 
 		// keys[0] =  -1; keys[1] = n; keys[2] = +1; keys[3] = n in/out
 		var keys = [];
@@ -155,6 +166,7 @@ $('#analyze').click(function(){
 		keys[0] = (key_n < 11) ? (key_n + 2 + key_a) : ((key_n + 2) % 12 + key_a);
 		// second key is 7 steps around the wheel
 		keys[1] = (key_n < 6) ? (key_n + 7 + key_a) : ((key_n + 7) % 12+ key_a);
+
 		return list_keys(keys);
 	}
 	

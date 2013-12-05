@@ -1,5 +1,5 @@
 .wheel_background{
-	background-image:url("../images/camelotHarmonicMixing.jpg");
+	background-image:url('../images/camelotHarmonicMixing.jpg');
 	background-repeat: no-repeat;
 	height: 600px;
 	width: 600px;
@@ -23,4 +23,11 @@
 
 #analyze{
 	margin: 1.2em auto 0.9em;
+}
+
+#overlay_b{
+	background-image:url('../images/wheel_overlay_harmonic_b.png');
+	background-repeat: no-repeat;
+	opacity: 0.7;
+	filter:alpha(opacity=70); /* for ie 8 and older */
 }
