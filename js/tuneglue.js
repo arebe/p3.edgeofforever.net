@@ -203,7 +203,7 @@ $('#analyze').click(function(){
 				keylist += keys[i];
 			}
 			else{
-				keylist += keys[i] + ",";
+				keylist += keys[i] + ", ";
 			}
 		}
 		return keylist;
