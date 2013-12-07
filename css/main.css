@@ -42,6 +42,9 @@ footer{
 }
 
 /** Layout **/
+#midsection{
+	width: 1050px;
+}
 #leftside{
 	width: 425px;
 	margin-right: 50px;

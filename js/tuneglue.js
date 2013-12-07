@@ -1,4 +1,8 @@
 /*** Global variables ***/
+// canvas
+var context;
+var canvas;
+
 // user input variables:
 var bpm_outgoing;
 var key_outgoing;
@@ -29,8 +33,10 @@ var camelot_code_key = {
 $(document).ready(function(){
 	console.log('ready!');
 	$('#canvas').addClass('wheel_background');
-	var canvas = document.getElementById('canvas'),
+	canvas = document.getElementById('canvas'),
 	context = canvas.getContext('2d');
+	// test loading image
+
 });
 
 // bpm error checking
@@ -76,6 +82,8 @@ $('input[name=response]').click(function(){
 
 // analyze track button
 $('#analyze').click(function(){
+	//clear canvas
+	canvas.width = canvas.width;
 	// different behavior based on response selected
 	// key_incoming array to be harmonic or energy_boost
 	// bpm_incoming is + or - an amount 
@@ -133,13 +141,12 @@ $('#analyze').click(function(){
 		var key_other = parse_code(key_outgoing)[2];
 		
 		// show and rotate overlay
-	    	if (key_a =='B'){
-		    img_overlay = new Image();
-		    img_overlay.src='../images/ wheel_overlay_harmonic_b.png';
-		    img_overlay.onload = function(){
-			context.drawImage(img_overlay, 0, 0);
-		    }
-	    	}
+		if (key_a =='A'){
+			overlay('images/harmonic_overlay_a.png', key_n);
+	    }
+		else if(key_a == 'B'){
+			overlay('images/harmonic_overlay_B.png', key_n);
+		}
 
 		// keys[0] =  -1; keys[1] = n; keys[2] = +1; keys[3] = n in/out
 		var keys = [];
@@ -159,6 +166,14 @@ $('#analyze').click(function(){
 		// parse outoing key code into alpha and numeric parts
 		var key_n = parse_code(key_outgoing)[0];
 		var key_a = parse_code(key_outgoing)[1];
+
+		// show and rotate overlay
+		if (key_a =='A'){
+			overlay('images/energy_overlay_a.png', key_n+2);
+	    }
+		else if(key_a == 'B'){
+			overlay('images/energy_overlay_B.png', key_n+2);
+		}
 
 		// keys[0] =  +2; keys[1] = +7
 		var keys = [];
@@ -193,4 +208,35 @@ $('#analyze').click(function(){
 		}
 		return keylist;
 	}
+	
+	// calculate rotation and display dark overlay on wheel
+	function overlay(img_url, key_n){
+		var rot_degrees = (key_n % 12)*(360/12);
+		var img_overlay = new Image();
+		img_overlay.src = img_url;
+		img_overlay.onload = function(){
+			drawImageRot(img_overlay, 0, 0, 600, 600, rot_degrees);
+		}
+	}
+
 });
+
+/* image rotate function borrowed from:
+ http://stackoverflow.com/questions/2677671/how-do-i-rotate-a-single-object-on-an-html-5-canvas */
+function drawImageRot(img,x,y,width,height,deg){
+	//Convert degrees to radian 
+	var rad = deg * Math.PI / 180;
+
+    //Set the origin to the center of the image
+    context.translate(x + width / 2, y + height / 2);
+
+    //Rotate the canvas around the origin
+    context.rotate(rad);
+
+    //draw the image    
+    context.drawImage(img,width / 2 * (-1),height / 2 * (-1),width,height);
+
+    //reset the canvas  
+    context.rotate(rad * ( -1 ) );
+    context.translate((x + width / 2) * (-1), (y + height / 2) * (-1));
+}
