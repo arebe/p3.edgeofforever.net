@@ -20,7 +20,8 @@ body{
 }
 
 .intro{
-
+	width: 900px;
+	margin:0 auto 1em auto; 
 }
 
 h2{
@@ -75,11 +76,11 @@ footer{
 
 /** Camelot Code wheel **/
 #no_cavas{
-
+	color: #C0C0C0;
 }
 
 #canvas{
-	border: 0.5px solid black;
+	border: 0px;
 	position: relative;
 	z-index: 1;
 	overflow: hidden;
