@@ -213,10 +213,10 @@ $('#analyze').click(function(){
 	function overlay(img_url, key_n){
 		var rot_degrees = (key_n % 12)*(360/12);
 		var img_overlay = new Image();
-		img_overlay.src = img_url;
 		img_overlay.onload = function(){
 			drawImageRot(img_overlay, 0, 0, 600, 600, rot_degrees);
 		}
+		img_overlay.src = img_url;
 	}
 
 });
