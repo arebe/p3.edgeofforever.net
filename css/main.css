@@ -22,6 +22,7 @@ body{
 .intro{
 	width: 900px;
 	margin:0 auto 1em auto; 
+	line-height: 14pt;
 }
 
 h2{
