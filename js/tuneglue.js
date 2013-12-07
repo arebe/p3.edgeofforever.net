@@ -211,9 +211,9 @@ $('#analyze').click(function(){
 	function overlay(img_url, key_n){
 		var rot_degrees = (key_n % 12)*(360/12);
 		var img_overlay = new Image();
-		img_overlay.onload = function(){
+		img_overlay.addEventListener('load', function(){
 			drawImageRot(img_overlay, 0, 0, 600, 600, rot_degrees);
-		}
+		    }, false);
 		img_overlay.src = img_url;
 	}
 

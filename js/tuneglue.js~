@@ -140,10 +140,10 @@ $('#analyze').click(function(){
 		
 		// show and rotate overlay
 		if (key_a =='A'){
-			overlay('../images/harmonic_overlay_a.png', key_n);
+			overlay('/images/harmonic_overlay_a.png', key_n);
 	    }
 		else if(key_a == 'B'){
-			overlay('../images/harmonic_overlay_B.png', key_n);
+			overlay('/images/harmonic_overlay_B.png', key_n);
 		}
 
 		// keys[0] =  -1; keys[1] = n; keys[2] = +1; keys[3] = n in/out
@@ -167,10 +167,10 @@ $('#analyze').click(function(){
 
 		// show and rotate overlay
 		if (key_a =='A'){
-			overlay('../images/energy_overlay_a.png', key_n+2);
+			overlay('/images/energy_overlay_a.png', key_n+2);
 	    }
 		else if(key_a == 'B'){
-			overlay('../images/energy_overlay_B.png', key_n+2);
+			overlay('/images/energy_overlay_B.png', key_n+2);
 		}
 
 		// keys[0] =  +2; keys[1] = +7
